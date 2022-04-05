@@ -1,0 +1,47 @@
+main{
+    width: 75%;
+    margin:0 auto;
+}
+
+.hr{
+    height: 10px;
+    background-color: black;
+}
+
+textarea{
+    border: 0;
+    resize: none;
+    height: 30px;
+    width: 100%;
+    background-color: inherit;
+}
+
+hr {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color:#dee2e6;
+    height: 1px;
+    margin: 0;
+  }
+
+  .py-2px{
+        padding: 2px 0;
+  }
+
+  .card{
+      background-color: inherit;
+  }
+
+  .past-time{
+      background-color: grey;
+  }
+
+  .present-time{
+      background-color: red;
+  }
+
+  .future-time{
+      background-color: greenyellow;
+  }
