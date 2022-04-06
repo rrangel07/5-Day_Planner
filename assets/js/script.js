@@ -38,7 +38,6 @@ var intervals;
 var currentTime;
 
 console.log(time);
-$headerEl.text(moment().format("dddd, MMMM Do YYYY, HH:mm:ss"));
 function createCards(){
     currentTime= moment().format('HH')
     console.log(currentTime);
@@ -134,6 +133,9 @@ function init(){
     setEventListeners();
     createCards();
     retrieveTasks();
+    window.setInterval(function(){
+        $headerEl.text(moment().format("dddd, MMMM Do YYYY, HH:mm:ss"));
+    },1000)
 }
 
 init();
