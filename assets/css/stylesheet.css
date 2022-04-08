@@ -31,28 +31,38 @@ hr {
     margin: 0;
   }
 
-  .py-2px{
-        padding: 2px 0;
-  }
+.py-2px{
+    padding: 2px 0;
+}
 
-  .card{
-      background-color: inherit;
-  }
+.card{
+    background-color: inherit;
+}
 
-  .past-time{
-      background-color: rgb(218, 16, 16);
-      color:blue;
-  }
+.past-time{
+    background-color: rgb(218, 16, 16);
+    color:blue;
+}
 
-  .present-time{
-      background-color: rgb(224, 174, 10);
-  }
+.present-time{
+    background-color: rgb(224, 174, 10);
+}
 
-  .future-time{
-      background-color: rgb(4, 160, 4);
-  }
+.future-time{
+    background-color: rgb(4, 160, 4);
+}
 
-  button{
-      background-color: transparent;
-      border: 0;
-  }
+button{
+    background-color: transparent;
+    border: 0;
+}
+
+.icons-size{
+    font-size: 30px;
+}
+
+@media screen and (max-width: 576px) {
+    .icons-size{
+        font-size: 16px;
+    }
+}

@@ -43,21 +43,21 @@ function createCards(){
     console.log(currentTime);
     for(let i=0; i<time.length;i++){
         $contEl.append(
-        `<div class="card-group flex-row justify-content-between" id="group${i}">
-            <div class="card col-sm-1 col-1">
-                <div class="card-body d-flex align-items-center justify-content-center">
+        `<div class="row card-group flex-row justify-content-between" id="group${i}">
+            <div class="card col-sm-1 col-2">
+                <div class="card-body d-flex align-items-center justify-content-center px-0">
                     <p class="card-text" id="time-${i}">${moment(time[i].time,'HH').format('HH')}</p>
                 </div>
             </div>
-            <div class="card col-10">
+            <div class="card col-8 col-sm-10">
                 <div class="card-body d-flex flex-column justify-content-between mw-100 p-0" id="time-subdivision-${i}">
                     
                 </div>
             </div>
-            <div class="card col-1 col-sm-1">
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <button class="save-button" tittle='click to save'><i class="fa-solid fa-floppy-disk save-button" style="font-size:30px" ></i></button>
-                    <button class="delete-button"><i class="fa-solid fa-trash delete-button" style="font-size:30px"></i></button>
+            <div class="card col-2 col-sm-1 px-0">
+                <div class="card-body d-flex flex-column justify-content-between px-0">
+                    <button class="save-button" tittle='click to save'><i class="fa-solid fa-floppy-disk save-button icons-size" ></i></button>
+                    <button class="delete-button"><i class="fa-solid fa-trash delete-button icons-size"></i></button>
                 </div>
             </div>
         </div>`);
