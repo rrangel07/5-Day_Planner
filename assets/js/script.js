@@ -33,16 +33,15 @@ var time=
 var $timeCards=[];
 var $timeSubdivisions=[];
 var $timeContainers=[];
-var $saveButtons;
 var intervals;
 var currentTime;
 
 console.log(time);
 function createCards(){
-    currentTime= moment().format('HH')
+    currentTime= moment().format('HH')  //returns the current time just the hour value i.e. if it's 9:43 am returns '09'
     console.log(currentTime);
     for(let i=0; i<time.length;i++){
-        $contEl.append(
+        $contEl.append( //creates dinamically the containers for the time, the tasks and the icons. Also, assigns id's to these containers (dynamically too) and displays the time with the format of 'HH' .
         `<div class="row card-group flex-row justify-content-between" id="group${i}">
             <div class="card col-sm-1 col-2">
                 <div class="card-body d-flex align-items-center justify-content-center px-0">
@@ -61,28 +60,28 @@ function createCards(){
                 </div>
             </div>
         </div>`);
-        $timeCards.push($(`#group${i}`));
+        $timeCards.push($(`#group${i}`)); //stores the groups containers in an array
         console.log($timeCards);
-        $timeSubdivisions.push($(`#time-subdivision-${i}`));
+        $timeSubdivisions.push($(`#time-subdivision-${i}`)); //stores the subdivision containers in an array
         console.log($timeSubdivisions);
-        $timeContainers.push($(`#time-${i}`));
+        $timeContainers.push($(`#time-${i}`)); //stores the p element that displays the time in an array
         console.log($timeContainers);
-        for(let j=0; j<4; j++){
-            intervals= moment(j*15,'mm').format('mm');
+        for(let j=0; j<4; j++){ // creating the 4 subdivisions for 15 min intervals
+            intervals= moment(j*15,'mm').format('mm'); //setting the format to showing only minutes.
             console.log(intervals);
             $timeSubdivisions[i].append(
                 `<div class="d-flex align-items-center mw-100">
                     <p class="mx-3 mb-0 py-2px">:${intervals}</p><textarea class="card-text" placeholder="Set your event here" id='text-${$timeContainers[i].text()}-${j}'></textarea>
                 </div>
                 <hr>`
-            );
+            );// generates the for text areas where the user will input their tasks, in 15 min intervarls for each time of the day.
         }
-        if (moment(time[i].time,'HH').format('HH') < currentTime){
+        if (moment(time[i].time,'HH').format('HH') < currentTime){ //sets the background color of the card to red if the current time is bigger than the time in the card. Remember that we are only comparing the HH vs HH, minutes have no influence in this condition.
             $timeCards[i].addClass('past-time');
-        } else if(moment(time[i].time,'HH').format('HH') > currentTime){
+        } else if(moment(time[i].time,'HH').format('HH') > currentTime){ //sets the background color of the card to green if the current time is smaller than the time in the card. Remember that we are only comparing the HH vs HH, minutes have no influence in this condition.
             $timeCards[i].addClass('future-time');
         } else{
-            $timeCards[i].addClass('present-time');
+            $timeCards[i].addClass('present-time'); //sets the background color of the card to yellow if the current time is equal to the time in the card. Remember that we are only comparing the HH vs HH, minutes have no influence in this condition.
         }
         
     }
@@ -108,17 +107,17 @@ function saveDelete(evt){
         }
 }
 
-function storeTasks(){
+function storeTasks(){ //stores the tasks contained in the <textarea>s in the time object.
     for (let i=0;i<time.length;i++){
         for (let j=0;j<4;j++){
             time[i].tasks[j]=($(`#text-${$timeContainers[i].text()}-${j}`)).val();
         }
     }
-    localStorage.setItem('savedTasks',JSON.stringify(time));
+    localStorage.setItem('savedTasks',JSON.stringify(time)); //stores in local memory
 }
-function retrieveTasks(){
+function retrieveTasks(){ //brings back saved tasks 
    var tempTasks=JSON.parse(localStorage.getItem('savedTasks'));
-   if (tempTasks !== null){
+   if (tempTasks !== null){ //if there are any stored tasks we populate the object property 'tasks' which is an array.
        time=tempTasks;
        for (let i=0;i<time.length;i++){
         for (let j=0;j<4;j++){
@@ -133,7 +132,7 @@ function init(){
     setEventListeners();
     createCards();
     retrieveTasks();
-    window.setInterval(function(){
+    window.setInterval(function(){ //displays the current time updating every second.
         $headerEl.text(moment().format("dddd, MMMM Do YYYY, HH:mm:ss"));
     },1000)
 }
